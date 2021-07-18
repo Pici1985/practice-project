@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card mt-3">
+        <h1 class="text-center">Post Data</h1>
+        <form [formGroup]="postDataForm" class="m-3">
+            <div formGroupName="postData" class="col-8 mx-auto"> 
+                <label for="email" class="form-label">Author:</label>
+                <input class="form-control" id="author" formControlName="author">
+                <label for="email" class="form-label">Title:</label>
+                <input class="form-control" id="title" formControlName="title">      
+            </div> 
+        </form>
+        <div class="buttons d-grid gap-2 m-3">
+            <button class="btn btn-success col-8 mx-auto" (click)="postData()">Post Data</button>
+        </div>        
+    </div> 
+
+    <div class="card mt-3">
+        <h1 class="text-center">Posts</h1>
+        <ul id="postsList" class="col-8 mx-auto">
+            <li *ngFor="let post of posts" style="list-style:none;" class="list-group-item d-flex justify-content-between" id="{{ post.id }}">
+               <div class="data d-flex">
+                   <p><strong>Author: </strong>{{ post.author }}, <strong>Title: </strong>{{ post.title }}</p> 
+               </div>
+               <div class="buttons">
+                   <button class="btn btn-warning" (click)="updateLine( this.post.id )">U</button> <!--put request -->
+                   <button class="btn btn-danger" (click)="deleteLine( this.post.id )">X</button> <!-- Delete request -->
+               </div> 
+            </li>
+        </ul>
+       
+        <div class="buttons d-grid gap-2 m-3">
+            <button class="btn btn-primary col-8 mx-auto" (click)="getPosts()">Get Posts</button>
+        </div>
+    </div>
+
+</div>

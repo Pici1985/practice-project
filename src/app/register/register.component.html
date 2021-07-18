@@ -1,0 +1,40 @@
+<h1 class="text-center mt-5" >Register an Account</h1>
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body"> 
+
+            <form [formGroup]="registerForm" >
+                <div formGroupName="register">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address:</label>
+                        <input class="form-control" id="email" formControlName="email">
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.email')?.errors?.required"> Please enter an email address </p>
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.email')?.errors?.email"> Email address invalid</p>
+                    </div>
+                    <div class="passwords" formGroupName="passwords" id="passwords"> 
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <input class="form-control" id="password" formControlName="password">
+                        </div>
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.passwords.password')?.errors?.required">Field required</p>
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.passwords.password')?.invalid">Password too short</p>
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">Confirm Password:</label>
+                            <input class="form-control" id="confirm_password" formControlName="confirm_password">
+                        </div>
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.passwords.confirm_password')?.errors?.required">Field required</p>
+                        <p class="errorMessage" *ngIf="this.registerForm.get('register.passwords.confirm_password')?.invalid">Password too short</p>
+                    </div>   
+                    <p  class="errorMessage" *ngIf="this.registerForm.get('register.passwords')?.errors?.mismatch">Passwords do not match</p>   
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success btn-block" (click)="onSubmit()" [disabled]="registerForm.invalid"> Submit </button>
+                    </div>    
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

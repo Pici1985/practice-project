@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "author": "Hamish ",
+      "title": "ugatas",
+      "id": 3
+    },
+    {
+      "author": "Sophie",
+      "title": "Cukiskodas",
+      "id": 4
+    },
+    {
+      "author": "indiaiyoutuber",
+      "title": "szarakcent",
+      "id": 5
+    },
+    {
+      "author": "Pici",
+      "title": "Angular",
+      "id": 6
+    },
+    {
+      "author": "Ivi",
+      "title": "konyveles",
+      "id": 7
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
