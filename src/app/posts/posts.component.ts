@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { DatasenderService } from '../datasender.service';
 import { DatadeleteService } from '../datadelete.service';
 import { DataupdateService } from '../dataupdate.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,54 +16,60 @@ export class PostsComponent implements OnInit {
 
   postDataForm = new FormGroup({
     postData: new FormGroup({ 
-      author: new FormControl(''), 
-      title: new FormControl('') })
+      author: new FormControl(this.router.url), 
+      title: new FormControl('Kicsipocsom') })
   });
 
   constructor(private datagetterService: DatagetterService, 
               private DatasenderService: DatasenderService,
               private datadeleteService: DatadeleteService,
-              private dataupdateService: DataupdateService) { }
+              private dataupdateService: DataupdateService,
+              private router : Router) {  }
 
-  posts:any;
+  public posts:any;
 
+  public url!: String;
+
+  public value!: String;
+
+  public title!: String;
+  
   ngOnInit(): void {
-    
   }
 
-  getPosts(){
-    // console.log('Muxik');
+    getPosts(){
     this.datagetterService.getPosts().subscribe(data => {
       this.posts = data;
     });
   }
 
+  
+  
   postData(){
     // console.log('posting');
-    const data:any = {
+    let data:any = {
       "author":  this.postDataForm.get('postData.author')!.value,
       "title": this.postDataForm.get('postData.title')!.value
     }
     
-    this.DatasenderService.httpSend(data);
-    // ide jon egy http POST request egy servicebol
-    this.postDataForm.reset(); 
-    console.log('Data sent');
-    this.datagetterService.getPosts().subscribe(data => {
-      this.posts = data;
-    });
+    this.DatasenderService.httpSend(data).then(() => {
+      console.log('Data sent');
+      this.datagetterService.getPosts().subscribe(data => {
+        this.posts = data;
+      });
+    });   
   }
-
+  
   updateLine(id:any){
     this.dataupdateService.log(id);
   }
 
   deleteLine(id:any){
     this.datadeleteService.delete(id).subscribe(data => {
+      this.datagetterService.getPosts().subscribe(data => {
+        this.posts = data;
+      });
       console.log(data);
-    });
-    this.datagetterService.getPosts().subscribe(data => {
-      this.posts = data;
     });
   }
 }

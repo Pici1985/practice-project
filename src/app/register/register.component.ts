@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   get password(){return this.registerForm.get('passwords.password')?.errors}
 
   onSubmit(){
-    const data:any = {
+    let data:any = {
       "email":  this.registerForm.get('register.email')!.value,
       "password": this.registerForm.get('register.passwords.password')!.value
     }
@@ -38,5 +38,4 @@ export class RegisterComponent implements OnInit {
     this.DatasenderService.send(data);
     // ide jon egy http POST request egy servicebol
   }
-
 }

@@ -4,9 +4,11 @@
         <form [formGroup]="postDataForm" class="m-3">
             <div formGroupName="postData" class="col-8 mx-auto"> 
                 <label for="email" class="form-label">Author:</label>
-                <input class="form-control" id="author" formControlName="author">
+                <!-- <input class="form-control" id="author" formControlName="author" placeholder="{{this.url}}"> -->
+                <input class="form-control" id="author" formControlName="author"  ngDefaultControl>
                 <label for="email" class="form-label">Title:</label>
-                <input class="form-control" id="title" formControlName="title">      
+                <!-- <input class="form-control" id="title" formControlName="title" placeholder="{{this.title}}"> -->
+                <input class="form-control" id="title" formControlName="title"  ngDefaultControl>
             </div> 
         </form>
         <div class="buttons d-grid gap-2 m-3">
@@ -22,8 +24,8 @@
                    <p><strong>Author: </strong>{{ post.author }}, <strong>Title: </strong>{{ post.title }}</p> 
                </div>
                <div class="buttons">
-                   <button class="btn btn-warning" (click)="updateLine( this.post.id )">U</button> <!--put request -->
-                   <button class="btn btn-danger" (click)="deleteLine( this.post.id )">X</button> <!-- Delete request -->
+                   <button class="btn btn-warning" (click)="updateLine( this.post.id )">Update</button> <!--put request -->
+                   <button class="btn btn-danger" (click)="deleteLine( this.post.id )">Delete</button> <!-- Delete request -->
                </div> 
             </li>
         </ul>

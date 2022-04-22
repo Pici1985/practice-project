@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DatasenderService } from './datasender.service';
 import { PostsComponent } from './posts/posts.component';
+import { RxPracticeComponent } from './rx-practice/rx-practice.component';
 
 
 
@@ -19,7 +20,8 @@ import { PostsComponent } from './posts/posts.component';
     AppComponent,
     RegisterComponent,
     HomePageComponent,
-    PostsComponent
+    PostsComponent,
+    RxPracticeComponent
   ],
   imports: [
     BrowserModule,

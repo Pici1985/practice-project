@@ -17,7 +17,7 @@ export class DatasenderService {
 
     let url = 'http://localhost:3000/posts';
 
-    this.http.post(url, data).toPromise().then((data: any) => {
+    return this.http.post(url, data).toPromise().then((data: any) => {
       console.log(data); 
     });
   }
